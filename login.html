@@ -1,0 +1,166 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login & Registration</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Pacifico&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: url('witwiw.jpg') no-repeat center center/cover;
+            margin: 0;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            max-width: 400px;
+        }
+        .form-container {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        h2 {
+            font-family: 'Pacifico', cursive;
+            font-size: 26px;
+        }
+        label {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            display: block;
+            text-align: left;
+            margin: 10px 0 5px;
+            color: #ffffff;
+        }
+        input, select, button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-family: 'Poppins', sans-serif;
+        }
+        input, select {
+            background: rgb(250, 250, 250);
+            border: 1px solid rgba(0, 0, 0, 0.3);
+            color: #000000;
+        }
+        button {
+            background: linear-gradient(135deg, #b537c0, #a14bd3);
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 15px;
+        }
+        button:hover {
+            background: linear-gradient(135deg, #ff5f6d, #ff758c);
+        }
+        .login-link {
+            margin-top: 15px;
+            font-size: 14px;
+            color: #fff;
+        }
+        .login-link a {
+            color: #ff002b;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .login-link a:hover {
+            text-decoration: underline;
+        }
+        @media (max-width: 500px) {
+            body {
+                padding: 20px;
+                height: auto;
+            }
+            .form-container {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="form-container" id="loginContainer">
+            <h2>Login Form</h2>
+            <form onsubmit="return validateLogin()">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" placeholder="Enter username" required>
+                
+                <label for="loginPassword">Password</label>
+                <input type="password" id="loginPassword" name="loginPassword" placeholder="Enter password" required>
+                
+                <button type="submit">Login</button>
+            </form>
+            <p class="login-link">Don't have an account? <a href="#" onclick="showRegister()">Sign Up</a></p>
+        </div>
+
+        <div class="form-container" id="registerContainer" style="display: none;">
+            <h2>Sign up Form</h2>
+            <form>
+                <label for="fname">First Name</label>
+                <input type="text" id="fname" name="fname" placeholder="Enter first name" required>
+                
+                <label for="lname">Last Name</label>
+                <input type="text" id="lname" name="lname" placeholder="Enter last name" required>
+                
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="Enter email" required>
+                
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Enter password" required>
+                
+                <label for="gender">Gender</label>
+                <select id="gender" name="gender">
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Other</option>
+                </select>
+                
+                <button type="submit">Sign Up</button>
+            </form>
+            <p class="login-link">Already have an account? <a href="#" onclick="showLogin()">Login</a></p>
+        </div>
+    </div>
+
+    <script>
+        function showLogin() {
+            document.getElementById('registerContainer').style.display = 'none';
+            document.getElementById('loginContainer').style.display = 'block';
+        }
+
+        function showRegister() {
+            document.getElementById('registerContainer').style.display = 'block';
+            document.getElementById('loginContainer').style.display = 'none';
+        }
+
+        function validateLogin() {
+            var username = document.getElementById('username').value;
+            var password = document.getElementById('loginPassword').value;
+            
+            if (username === "admin" && password === "1234") {
+                alert("Login successful!");
+                return true;
+            } else {
+                alert("Invalid username or password");
+                return false;
+            }
+        }
+    </script>
+</body>
+</html>
